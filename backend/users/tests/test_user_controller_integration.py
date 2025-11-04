@@ -361,16 +361,16 @@ class TestUserControllerIntegration(unittest.TestCase):
         
         # Update with team and department
         response = self.client.put('/users/297', json={
-            "team_id": 1,
-            "dept_id": 5
+            "team_id": 12,
+            "dept_id": 6
         })
         
         # Assertions
         self.assertEqual(response.status_code, 200)
         data = json.loads(response.data)
         self.assertEqual(data["status"], 200)
-        self.assertEqual(data["data"]["team_id"], 1)
-        self.assertEqual(data["data"]["dept_id"], 5)
+        self.assertEqual(data["data"]["team_id"], 12)
+        self.assertEqual(data["data"]["dept_id"], 6)
 
     # # ==================== get_users_by_dept_id Tests ====================
     
