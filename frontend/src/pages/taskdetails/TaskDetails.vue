@@ -491,25 +491,20 @@ const canEditTask = computed(() => {
   return isTaskOwner //|| hasRolePermission
 })
 
-// const canAssignTask = computed(() => {
-//   if (!task.value || !currentUser.userId) return false
-  
-//   const currentUserId = String(currentUser.userId).trim()
-//   const taskOwnerId = String(task.value.owner_id).trim()
-//   const isTaskOwner = currentUserId === taskOwnerId && currentUserId !== ''
-//   const hasRolePermission = currentUser.role === 'manager' || currentUser.role === 'director'
-  
-//   return isTaskOwner || hasRolePermission
-// })
-
+// User can only assign if they are BOTH the task owner AND a manager/director
 const canAssignTask = computed(() => {
-  if (!task.value) return false
+  if (!task.value || !currentUser.userId) return false
   
-  // Only show assign button if user is manager/director
-  // const isUnassigned = task.value.status === 'Unassigned'
+  // Check if user is the task owner
+  const currentUserId = String(currentUser.userId).trim()
+  const taskOwnerId = String(task.value.owner_id).trim()
+  const isTaskOwner = currentUserId === taskOwnerId && currentUserId !== ''
+  
+  // Check if user has manager or director role
   const hasRolePermission = currentUser.role === 'manager' || currentUser.role === 'director'
   
-  return hasRolePermission //&& isUnassigned
+  // Both conditions must be true
+  return isTaskOwner && hasRolePermission
 })
 
 // Computed property to check if task has any attachments

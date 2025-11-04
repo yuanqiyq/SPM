@@ -13,6 +13,24 @@
           <p><strong>Your Role:</strong> {{ userRole.charAt(0).toUpperCase() + userRole.slice(1) }}</p>
         </div>
 
+        <!-- Permission Info -->
+        <div class="permission-info">
+          <div class="info-icon">
+            <i class="bi bi-info-circle"></i>
+          </div>
+          <div class="info-text">
+            <p v-if="userRole === 'director'">
+              <strong>As a Director</strong>, you can assign this task to managers in your department.
+            </p>
+            <p v-else-if="userRole === 'manager'">
+              <strong>As a Manager</strong>, you can assign this task to staff members in your team.
+            </p>
+            <p v-else>
+              <strong>Note:</strong> Only task owners with manager or director roles can reassign tasks.
+            </p>
+          </div>
+        </div>
+
         <!-- Loading indicator -->
         <div v-if="isLoading" class="loading-message">
           <p>Loading team members...</p>
@@ -606,6 +624,41 @@ export default {
 .task-info strong {
   color: #1a1a1a;
   font-weight: 500;
+}
+
+/* Permission Info */
+.permission-info {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.permission-info .info-icon {
+  color: #3b82f6;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.permission-info .info-text {
+  flex: 1;
+}
+
+.permission-info .info-text p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #1e40af;
+  line-height: 1.5;
+}
+
+.permission-info .info-text strong {
+  font-weight: 600;
+  color: #1e3a8a;
 }
 
 /* Form */
