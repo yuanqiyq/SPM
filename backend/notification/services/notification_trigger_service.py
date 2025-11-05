@@ -882,8 +882,10 @@ You can view and respond to this comment in your task."""
         # HTML content for email - using your specified format with bold heading
         notification_content = f"""
         <h3 style="color: #1f2937; margin-bottom: 16px;"><strong>Task Update Summary</strong></h3>
-        <p style="color: #374151; margin-bottom: 12px;">Changes made to your task {task_id}:</p>
+        <p style="color: #374151; margin-bottom: 12px;">Changes made to your task:</p>
         <ul style="color: #374151; margin-bottom: 16px;">
+            <li><strong>Task:</strong> {task_name}</li>
+            <li><strong>Task ID:</strong> {task_id}</li>
             {changes_html}
         </ul>
         <p style="color: #6b7280; font-size: 14px;">Please review the updated task details and take any necessary actions.</p>
@@ -892,7 +894,10 @@ You can view and respond to this comment in your task."""
         # Plain text content for in-app notification - using your specified format with bold heading
         changes_summary = "\n".join(changes_text)
         plain_text = f"""**Task Update Summary**
-Changes made to your task {task_id}:
+Changes made to your task:
+
+Task: {task_name}
+Task ID: {task_id}
 {changes_summary}
 
 Please review the updated task details and take any necessary actions."""
