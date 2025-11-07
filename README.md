@@ -1,5 +1,7 @@
 # SPM Project
 
+**GitHub Repository:** [View on GitHub](https://github.com/yuanqiyq/SPM)
+
 ## Table of Contents
 - [Frontend Setup](#frontend-setup)
 - [Backend Setup](#backend-setup)
