@@ -7,4 +7,4 @@ fpdf2
 openpyxl
 reportlab
 pandas
-supabase==2.19.0
+supabase==2.23.2

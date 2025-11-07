@@ -1,5 +1,5 @@
 flask
 flask-cors
 python-dotenv
-supabase==2.19.0
+supabase==2.23.2
 python-dateutil
