@@ -1,7 +1,7 @@
 flask
 flask-cors
 python-dotenv
-supabase
+supabase=2.19.0
 python-dateutil
 unittest-xml-reporting>=3.2.0
 requests
